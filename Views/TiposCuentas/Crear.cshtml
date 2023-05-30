@@ -1,0 +1,29 @@
+﻿@model TipoCuenta
+@{
+    ViewData["Title"] = "Crear Tipo Cuenta";
+}
+<div class="container text-center">
+    <h1>Tipos de cuenta para usuarios</h1>
+    <h6>Crea un tipo de cuenta para que puedas saber en que donde y cuando gastas, transfierws o cobras</h6>
+    <div asp-validation-summary="ModelOnly" class="text-danger">
+
+    </div>
+    <form asp-action="crear">
+        <div class="form-floating mb-3">
+            <input  asp-for="Nombre" class="form-control" type="text" placeholder="Nombre" id="Nombre" name="Nombre"/>
+            <label class="form-label" asp-for="Nombre">Nombre</label>
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Enviar</button>
+        <a asp-action="Index" class="btn btn-success">Cancelar</a>
+    </form>
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

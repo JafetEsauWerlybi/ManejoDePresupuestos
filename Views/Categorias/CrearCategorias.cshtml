@@ -1,0 +1,37 @@
+﻿@model Categorias
+
+@{
+    ViewData["Title"] = "CrearCategoria";
+}
+
+<h1>Crear una categoria</h1>
+
+<h6 class="mt-3">La categoria es una forma de poder administrar cada gasto, inversion o 
+    cualquier tipo de movimiento para que se haga mas facil monitorearlo
+</h6>
+<form asp-action="CrearCategoria" class="form mt-5">
+    <div class="form-floating mb-3">
+        <input asp-for="Nombre" class="form-control" type="text" placeholder="Nombre" id="Nombre" name="Nombre" />
+        <label class="form-label" asp-for="Nombre">Nombre</label>
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-floating mb-3">
+        <select asp-for="TipoOperacionId" class="form-select" asp-items="Html.GetEnumSelectList<TipoOperacion>()"></select>
+        <label class="form-label" asp-for="TipoOperacionId">Tipo de operación</label>
+        <span asp-validation-for="TipoOperacionId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Enviar</button>
+    <a asp-action="Index" class="btn btn-danger">Cancelar</a>
+</form>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}
